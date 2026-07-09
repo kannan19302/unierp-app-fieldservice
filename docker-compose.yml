@@ -1,0 +1,19 @@
+# Joins the `unierp` external network created by unierp-core's dev compose.
+# The service uses its own database (unierp_fieldservice) on the shared dev
+# Postgres instance — logical isolation, no cross-schema access.
+services:
+  fieldservice-svc:
+    build: .
+    container_name: unierp-fieldservice-svc
+    environment:
+      PORT: 4103
+      DATABASE_URL: postgresql://unerp:unerp_password@unerp-postgres:5432/unierp_fieldservice?schema=public
+      EXT_SERVICE_JWT_SECRET: ${EXT_SERVICE_JWT_SECRET:-dev-ext-secret-change-me}
+    ports:
+      - "4103:4103"
+    networks:
+      - unierp
+
+networks:
+  unierp:
+    external: true
