@@ -1,7 +1,7 @@
 {
   "name": "Field Service",
   "slug": "field-service",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "apiVersion": 1,
   "category": "Industry",
   "vendor": "unierp",
@@ -10,13 +10,22 @@
   "longDescription": "Field Service for UniERP: manage service tickets with SLA deadlines, dispatch technicians from a live board, capture on-site checklists with signatures, and schedule recurring preventative maintenance. Runs as its own service and can be installed or uninstalled in real time.",
   "icon": "wrench",
   "pricing": "FREE",
-  "tags": ["field-service", "dispatch", "tickets", "sla", "maintenance"],
+  "tags": [
+    "field-service",
+    "dispatch",
+    "tickets",
+    "sla",
+    "maintenance"
+  ],
   "service": {
     "routePrefix": "field-service",
     "baseUrlEnv": "FIELD_SERVICE_SERVICE_URL",
     "defaultBaseUrl": "http://localhost:4103",
     "healthcheck": "/svc/health",
-    "scopes": ["field-service:rw"],
+    "scopes": [
+      "field-service:read",
+      "field-service:write"
+    ],
     "timeoutMs": 15000
   },
   "pages": []

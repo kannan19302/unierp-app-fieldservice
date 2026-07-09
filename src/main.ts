@@ -15,7 +15,7 @@ async function bootstrap() {
     tenantContextMiddleware({
       secret,
       appSlug: APP_SLUG,
-      publicPaths: [HEALTH_PATH],
+      publicPaths: [HEALTH_PATH, '/events'],
     }),
   );
 

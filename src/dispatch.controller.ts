@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Param, Patch, Post, Query, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { DispatchService } from './dispatch.service';
 import { TenantRequest } from './tenant';
+import { ScopeGuard } from './scope.guard';
 
+@UseGuards(ScopeGuard)
 @Controller('dispatch')
 export class DispatchController {
   constructor(private readonly dispatchService: DispatchService) {}

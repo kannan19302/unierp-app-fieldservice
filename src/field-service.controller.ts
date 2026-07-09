@@ -1,12 +1,14 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { FieldServiceService } from './field-service.service';
 import { TenantRequest } from './tenant';
+import { ScopeGuard } from './scope.guard';
 
 /**
  * Reached only through core's ext-gateway at /api/v1/ext/field-service/*.
  * Tenant identity comes from the verified tenant-context token, never from
  * the client.
  */
+@UseGuards(ScopeGuard)
 @Controller()
 export class FieldServiceController {
   constructor(private readonly service: FieldServiceService) {}
