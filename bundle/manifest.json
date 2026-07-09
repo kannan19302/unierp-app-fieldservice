@@ -1,7 +1,7 @@
 {
   "name": "Field Service",
   "slug": "field-service",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "apiVersion": 1,
   "category": "Industry",
   "vendor": "unierp",
@@ -28,5 +28,84 @@
     ],
     "timeoutMs": 15000
   },
-  "pages": []
+  "pages": [
+    {
+      "slug": "tickets",
+      "title": "Service Tickets",
+      "type": "remote",
+      "layout": {
+        "dataUrl": "tickets",
+        "columns": [
+          {
+            "key": "title",
+            "label": "Title"
+          },
+          {
+            "key": "customerName",
+            "label": "Customer"
+          },
+          {
+            "key": "priority",
+            "label": "Priority"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          },
+          {
+            "key": "slaDeadline",
+            "label": "SLA Deadline"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "dispatches",
+      "title": "Dispatches",
+      "type": "remote",
+      "layout": {
+        "dataUrl": "dispatches",
+        "columns": [
+          {
+            "key": "technicianId",
+            "label": "Technician"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          },
+          {
+            "key": "scheduledTime",
+            "label": "Scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "preventative",
+      "title": "Preventative Maintenance",
+      "type": "remote",
+      "layout": {
+        "dataUrl": "preventative",
+        "columns": [
+          {
+            "key": "customerName",
+            "label": "Customer"
+          },
+          {
+            "key": "description",
+            "label": "Description"
+          },
+          {
+            "key": "nextRunDate",
+            "label": "Next Run"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          }
+        ]
+      }
+    }
+  ]
 }
