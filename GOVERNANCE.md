@@ -55,6 +55,25 @@ non-trivial work. Guessing at the conventions is how the program fragments.
 Definitions: `ERPSys/.claude/agents/`. They are vendor-neutral — follow them whichever tool
 you are (Claude, Antigravity, DeepSeek, Copilot, Cursor, Gemini, Windsurf, or any future one).
 
+## Before you push (this repo has NO local git hook)
+
+Unlike `ERPSys`, this repository has **no husky pre-push hook** — husky is not installed here,
+so any hook file would be a dead file that silently does nothing. That is worse than none,
+because it looks like protection. **CI is the real gate** (`.github/workflows/guard.yml` and
+`ci.yml`), and it blocks the merge.
+
+Run this locally before every push so CI never surprises you:
+
+```bash
+node scripts/ci/check-secrets.mjs --all && pnpm typecheck && pnpm build
+```
+
+If you want a real local hook here, install husky properly (`pnpm add -D husky`, add a
+`prepare` script, regenerate the lockfile) — do not hand-create `.husky/` files, which do
+nothing without the dependency.
+
+---
+
 ## Current priority
 
 **Phase 0 — foundation restoration.** Read `ERPSys/docs/ai/ARCHITECTURE_REVIEW.md`. The
