@@ -1,0 +1,5 @@
+# Local blocking gate — ERPSys/docs/ai/TRD.md § 8.
+# If this fails, fix the cause. Never `git push --no-verify`.
+node scripts/ci/check-secrets.mjs
+pnpm lint
+pnpm typecheck

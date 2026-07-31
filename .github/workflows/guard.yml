@@ -1,0 +1,53 @@
+# Guard — shared gate for every UniERP repository.
+# Contract: no code with a failing check reaches the remote. ERPSys/docs/ai/TRD.md § 8.
+# There is deliberately NO `continue-on-error` in this file.
+name: Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    name: Secrets · governance · hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Secret scan
+        run: node scripts/ci/check-secrets.mjs --all
+
+      - name: Governance present
+        run: |
+          test -f GOVERNANCE.md || {
+            echo "::error::GOVERNANCE.md missing — every repo must point at ERPSys/docs/ai/."
+            exit 1
+          }
+          if [ -d docs/ai ]; then
+            echo "::error::This repo must NOT fork the master docs. They live in ERPSys/docs/ai/ only."
+            exit 1
+          fi
+          echo "✅ governance intact"
+
+      - name: No gate bypasses
+        run: |
+          if grep -rnE "continue-on-error:\s*true|--no-verify" .github/ 2>/dev/null; then
+            echo "::error::A gate bypass was found. A gate that cannot fail is worse than no gate."
+            exit 1
+          fi
+          echo "✅ no gate bypasses"
+
+      - name: Repo hygiene
+        run: |
+          if git ls-files | grep -EI "(^|/)(scratch|tmp)/|\.log$|temp_|\.bak$|\.orig$"; then
+            echo "::error::One-off / temp / debug artifacts are tracked. Remove them."
+            exit 1
+          fi
+          echo "✅ no scratch or temp artifacts tracked"
