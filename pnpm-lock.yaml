@@ -21,11 +21,11 @@ importers:
         specifier: ^6.0.0
         version: 6.19.3
       '@prisma/client':
-        specifier: ^6.0.0
-        version: 6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
+        specifier: ^7.9.1
+        version: 7.9.1(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
       '@unerp/service-kit':
         specifier: github:kannan19302/ERPSys#path:packages/service-kit
-        version: https://codeload.github.com/kannan19302/ERPSys/tar.gz/18878903f822eaa3b169da4775cf82326ca2c200#path:packages/service-kit
+        version: https://codeload.github.com/kannan19302/ERPSys/tar.gz/1d83caf8b9c6229571efcd48f0e31946251c15ea#path:packages/service-kit
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -115,12 +115,15 @@ packages:
   '@prisma/adapter-pg@6.19.3':
     resolution: {integrity: sha512-ocbvVIP/wX2uJWWLvo1/UK0nH8L5dv4MlE1DddVPID0/VRiEZDguWmAgKLVuPM6BuWTH3wGluZR40VgXb4WjiQ==}
 
-  '@prisma/client@6.19.3':
-    resolution: {integrity: sha512-mKq3jQFhjvko5LTJFHGilsuQs+W+T3Gm451NzuTDGQxwCzwXHYnIu2zGkRoW+Exq3Rob7yp2MfzSrdIiZVhrBg==}
-    engines: {node: '>=18.18'}
+  '@prisma/client-runtime-utils@7.9.1':
+    resolution: {integrity: sha512-mVIBGYdO5CFmK0HvjxrtfIyQQcPdb88pSCeVQriVQPVZyDovIWblpHfOgcS8QO187j3QF0ePArH8qPhp0AU2vg==}
+
+  '@prisma/client@7.9.1':
+    resolution: {integrity: sha512-+xgrh2EhJVF79wC0yX5G4PI1Rdcm7Qn/nekNQ+t/O153wtNggruHal+fXHSa0QE+Tp/Cw5wvxeCEhZZ59xGm8Q==}
+    engines: {node: ^20.19 || ^22.12 || >=24.0}
     peerDependencies:
       prisma: '*'
-      typescript: '>=5.1.0'
+      typescript: '>=5.4.0'
     peerDependenciesMeta:
       prisma:
         optional: true
@@ -200,8 +203,8 @@ packages:
   '@types/serve-static@2.2.0':
     resolution: {integrity: sha512-8mam4H1NHLtu7nmtalF7eyBH14QyOASmcxHhSfEoRyr0nP/YdoesEtU+uSRvMe96TW/HPTtkoKqQLl53N7UXMQ==}
 
-  '@unerp/service-kit@https://codeload.github.com/kannan19302/ERPSys/tar.gz/18878903f822eaa3b169da4775cf82326ca2c200#path:packages/service-kit':
-    resolution: {path: packages/service-kit, tarball: https://codeload.github.com/kannan19302/ERPSys/tar.gz/18878903f822eaa3b169da4775cf82326ca2c200}
+  '@unerp/service-kit@https://codeload.github.com/kannan19302/ERPSys/tar.gz/1d83caf8b9c6229571efcd48f0e31946251c15ea#path:packages/service-kit':
+    resolution: {gitHosted: true, path: packages/service-kit, tarball: https://codeload.github.com/kannan19302/ERPSys/tar.gz/1d83caf8b9c6229571efcd48f0e31946251c15ea}
     version: 0.2.0
 
   accepts@2.0.0:
@@ -849,7 +852,11 @@ snapshots:
     transitivePeerDependencies:
       - pg-native
 
-  '@prisma/client@6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)':
+  '@prisma/client-runtime-utils@7.9.1': {}
+
+  '@prisma/client@7.9.1(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)':
+    dependencies:
+      '@prisma/client-runtime-utils': 7.9.1
     optionalDependencies:
       prisma: 6.19.3(typescript@5.9.3)
       typescript: 5.9.3
@@ -948,7 +955,7 @@ snapshots:
       '@types/http-errors': 2.0.5
       '@types/node': 22.20.1
 
-  '@unerp/service-kit@https://codeload.github.com/kannan19302/ERPSys/tar.gz/18878903f822eaa3b169da4775cf82326ca2c200#path:packages/service-kit': {}
+  '@unerp/service-kit@https://codeload.github.com/kannan19302/ERPSys/tar.gz/1d83caf8b9c6229571efcd48f0e31946251c15ea#path:packages/service-kit': {}
 
   accepts@2.0.0:
     dependencies:
