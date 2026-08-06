@@ -1,15 +1,51 @@
+# Dependencies
 node_modules/
-dist/
-.env
-*.log
+.pnpm-store/
 
-# Repo hygiene — no one-off scripts, scratch work, or debug artifacts
+# Build output
+dist/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Test and coverage artifacts
+coverage/
+test-results/
+playwright-report/
+
+# Caches
+.turbo/
+.eslintcache
+.vite/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor and OS
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs and scratch
 *.log
-svc.log
-scratch/
-**/scratch/
-temp_*
-tmp_*
 *.tmp
 *.bak
 *.orig
+scratch/
+
+# Storybook
+storybook-static/
+
+# Repository-specific
+**/scratch/
+.env.local
+svc.log
+temp_*
+tmp_*
